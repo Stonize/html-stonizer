@@ -50,6 +50,7 @@ data "template_file" "user_data" {
     ssh_key = file("${path.cwd}/keys/tf-cloud-init.pub")
     install_docker = base64encode(file("${path.cwd}/scripts/install-docker.sh"))
     docker_compose = base64encode(file("${path.cwd}/scripts/docker-compose.yaml"))
+    env_file = base64encode(file("${path.cwd}/../env.example"))
   }
 }
 resource "aws_instance" "web" {

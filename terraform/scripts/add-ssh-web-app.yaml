@@ -31,6 +31,11 @@ write_files:
     content: !!binary |
       ${docker_compose}
 
+  - path: /tmp/.env
+    permissions: '0755'
+    content: !!binary |
+      ${env_file}
+
 runcmd:
   - ["sudo", "/tmp/install-docker.sh"]
   - ["sudo", "docker-compose", "-f", "/tmp/docker-compose.yaml", "up", "-d"]
