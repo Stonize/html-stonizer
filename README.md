@@ -1,3 +1,6 @@
+<p align="center">
+  <a href="http://stonize.com/" target="blank"><img src="https://stonize.com/static/media/logo_2.b1e2c59b.png" width="320" alt="Stonize Logo" /></a>
+</p>
 # Launch static server
 docker run --rm -p 80:80 -v $(pwd)/static:/usr/share/nginx/html:ro -d nginx
 
