@@ -1,14 +1,40 @@
 <p align="center">
   <a href="http://stonize.com/" target="blank"><img src="https://stonize.com/static/media/logo_2.b1e2c59b.png" width="320" alt="Stonize Logo" /></a>
 </p>
-# Launch static server
-docker run --rm -p 80:80 -v $(pwd)/static:/usr/share/nginx/html:ro -d nginx
 
-# Notarize HTML fragment
-http localhost:3000 url="http://localhost/index-original.html" start="This Instaforex " stop="in Asia"
+# Notarize an HTML fragment
+
+As use case we want to notarize an important financial report from `forextradingbig`:
+
+```
+http <ServiceUrl> url="https://www.forextradingbig.com/instaforex-broker-review/" start="This Instaforex " stop="in Asia"
+```
+
+This command will return the following:
+
+```
+{
+    "transaction": ""   
+    url: "https://www.forextradingbig.com/instaforex-broker-review/",
+    content: "3I2PMKD6PPE6C62CPLXVZKU7UJFQ3SCLHFY66NRQ65EQ4OPHG7BA"
+}
+```
+
+# Put your HTML fragment in the stone!
+
+Now you can let people know that you saved your html fragment simply inserting the following hidden input in your page:
+
+```
+<input type="hidden" name="tokenization" value="3I2PMKD6PPE6C62CPLXVZKU7UJFQ3SCLHFY66NRQ65EQ4OPHG7BA" start="This Instaforex " stop="in Asia"/>
+```
 
 # Verify content in page 
-http localhost:3000/verify url="http://localhost/index-original.html"
+
+A user that want to check if some pieces of the page are saved in blockchain he can invoke the following API:
+
+```
+http <ServiceUrl>/verify url="https://www.forextradingbig.com/instaforex-broker-review/"
+```
 
 # Current Limitations and Further Works
 

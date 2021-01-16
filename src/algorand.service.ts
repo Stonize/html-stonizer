@@ -296,7 +296,9 @@ export class AlgorandService {
 
     async getTransactionNoteByScrapingAlgoexplorer(txId) {
 
-        let browser = await puppeteer.launch()
+        let browser = await puppeteer.launch({
+            args: ['--no-sandbox']
+        })
         
         //opening a new page and navigating to Reddit
         const page = await browser.newPage();
