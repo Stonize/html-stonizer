@@ -2,6 +2,8 @@ FROM node:14.10.1 As development
 
 WORKDIR /app
 
+ENV DOCKER_TAG 0.0.2
+
 # Install chromium for puppeter
 RUN apt-get update && \
     apt-get install -y libx11-xcb-dev && \
